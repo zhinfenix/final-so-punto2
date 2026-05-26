@@ -3,7 +3,7 @@ import boto3
 from botocore.exceptions import ClientError
 
 app = FastAPI(title="API S3 EC2")
-BUCKET_NAME = "final-so-imagenes-zhinfenix"
+BUCKET_NAME = "final-so-imagenes-zhinfenix-3806"
 s3_client = boto3.client('s3', region_name='us-east-2')
 
 @app.post("/upload/")
@@ -32,3 +32,4 @@ async def get_image(usuario: str, image_name: str):
         if e.response['Error']['Code'] == '404':
             raise HTTPException(status_code=404, detail="El usuario o la imagen no existen.")
         raise HTTPException(status_code=500, detail=str(e))
+
